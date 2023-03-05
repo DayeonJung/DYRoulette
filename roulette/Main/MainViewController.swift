@@ -18,7 +18,12 @@ class ViewController: UIViewController {
   
   // 화살표 뷰
   var arrowImageView = UIImageView().then {
-    $0.image = UIImage(named: "arrowDown")
+    $0.image = UIImage(named: "arrowDown")?.withRenderingMode(.alwaysTemplate)
+    $0.tintColor = .white
+    $0.layer.shadowColor = UIColor.black.cgColor // 그림자 색상
+    $0.layer.shadowOpacity = 0.5 // 그림자 투명도
+    $0.layer.shadowOffset = CGSize(width: 0, height: 3) // 그림자 위치
+    $0.layer.shadowRadius = 5 // 그림자 크기
     $0.snp.makeConstraints {
       $0.size.equalTo(48)
     }
@@ -97,6 +102,14 @@ class ViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + owner.rouletteView.spinDuration) {
           print("룰렛이 \(self.numbers[owner.selectedIndex])을(를) 선택했습니다!")
         }
+      }
+      .disposed(by: disposeBag)
+    
+    settingView.editButton.rx.tap
+      .withUnretained(self)
+      .bind { owner, _ in
+        let vc = EditViewController()
+        owner.present(vc, animated: true, completion: nil)
       }
       .disposed(by: disposeBag)
   }

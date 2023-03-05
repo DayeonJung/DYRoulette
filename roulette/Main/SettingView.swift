@@ -10,29 +10,20 @@ import UIKit
 class SettingView: UIView {
   var stackView = UIStackView().then {
     $0.axis = .horizontal
-    $0.spacing = 8
+    $0.spacing = 20
   }
   
   // 추첨하기 버튼
   var button = UIButton().then {
-    $0.backgroundColor = .lightGray
-    $0.layer.borderColor = UIColor.gray.cgColor
-    $0.layer.borderWidth = 1
-    $0.layer.cornerRadius = 8
-    $0.clipsToBounds = true
-    $0.setTitle("추첨하기", for: .normal)
-    $0.setTitleColor(.black, for: .normal)
+    $0.backgroundColor = .clear
+    $0.setImage(UIImage(named: "play"), for: .normal)
   }
   
   // 편집하기 버튼
   var editButton = UIButton().then {
-    $0.backgroundColor = .lightGray
-    $0.layer.borderColor = UIColor.gray.cgColor
-    $0.layer.borderWidth = 1
-    $0.layer.cornerRadius = 8
-    $0.clipsToBounds = true
-    $0.setTitle("추가/삭제", for: .normal)
-    $0.setTitleColor(.black, for: .normal)
+    $0.backgroundColor = .clear
+    let coloredImage = UIImage(named: "edit")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+    $0.setImage(coloredImage, for: .normal)
  }
   
   override init(frame: CGRect) {
@@ -59,7 +50,7 @@ class SettingView: UIView {
     
     [button, editButton].forEach {
       $0.snp.makeConstraints {
-        $0.width.equalTo(88)
+        $0.width.equalTo(48)
       }
     }
   }
