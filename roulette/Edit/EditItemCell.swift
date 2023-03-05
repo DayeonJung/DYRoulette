@@ -8,7 +8,7 @@ import UIKit
 
 class EditItemCell: UITableViewCell {
   var titleLabel = UILabel().then {
-    $0.font = UIFont.systemFont(ofSize: 16.0, weight: .bold)
+    $0.font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
     $0.translatesAutoresizingMaskIntoConstraints = false
   }
 
@@ -24,8 +24,8 @@ class EditItemCell: UITableViewCell {
   private func setUI() {
     contentView.addSubview(titleLabel)
     titleLabel.snp.makeConstraints {
-      $0.top.leading.equalToSuperview().offset(20)
-      $0.bottom.equalToSuperview().offset(-20)
+      $0.top.leading.equalToSuperview().offset(16)
+      $0.bottom.equalToSuperview().offset(-16)
     }
 
   }

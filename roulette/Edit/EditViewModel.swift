@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+class EditViewModel {
+  var items: [String]
+  
+  init(items: [String]) {
+    self.items = items
+  }
+  
+  func addItem(text: String) {
+    items.append(text)
+  }
+}
