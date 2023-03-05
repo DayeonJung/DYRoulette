@@ -8,7 +8,10 @@ target 'roulette' do
   # Pods for roulette
   pod 'SnapKit'
   pod 'Then'
+  pod 'lottie-ios'
   
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxRelay'
+  
 end

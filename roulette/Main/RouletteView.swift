@@ -9,7 +9,9 @@ import UIKit
 
 class RouletteView: UIView {
   var texts: [String] = []
-   
+  var labels: [UILabel] = []
+  var roulettePath: UIBezierPath?
+  
   // 애니메이션 상수
   let spinDuration: TimeInterval = 3.0
   let spinRotateCount: CGFloat = 3.0
@@ -39,21 +41,20 @@ class RouletteView: UIView {
     let center = CGPoint(x: width / 2, y: height / 2)
     let radius = min(width, height) / 2 - 1
     
-    // 룰렛의 원형 그리기
-//    let circlePath = UIBezierPath(arcCenter: center, radius: radius, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: true)
-//    UIColor.black.setStroke()
-//    circlePath.lineWidth = 2.0
-//    circlePath.stroke()
-    
     // 룰렛에 표시될 숫자 그리기
     let labelFont = UIFont.systemFont(ofSize: 20.0, weight: .bold)
     let labelColor = UIColor.black
     
+    // UIBezierPath와 레이블 초기화
+    roulettePath = nil
+    labels.forEach { $0.removeFromSuperview() }
+    labels.removeAll()
+    
     for i in 0..<texts.count {
       let startAngle = oneArcAngle * CGFloat(i) - CGFloat.pi / 2.0
       let endAngle = oneArcAngle * CGFloat(i + 1) - CGFloat.pi / 2.0
-
-  
+      
+      
       // 룰렛의 각 호에 색 칠하기
       let path = UIBezierPath()
       path.move(to: center)
@@ -63,6 +64,12 @@ class RouletteView: UIView {
       let fillColor = UIColor(hue: CGFloat(i) / CGFloat(texts.count), saturation: 0.5, brightness: 1.0, alpha: 1.0)
       fillColor.setFill()
       path.fill()
+      
+      if roulettePath == nil {
+        roulettePath = path // 최초의 path는 그대로 저장
+      } else {
+        roulettePath?.append(path) // 이후 path는 append 해줌
+      }
       
       // 룰렛에 표시될 숫자 레이블 그리기
       let labelAngle = (startAngle + endAngle) / 2.0
@@ -96,6 +103,25 @@ class RouletteView: UIView {
     spinAnimation.fillMode = .forwards
     spinAnimation.isRemovedOnCompletion = false
     layer.add(spinAnimation, forKey: "spinAnimation")
+  }
+
+  func changeTexts(to items: [String]) {
+    texts = items
+    reset()
+    setNeedsDisplay()
+  }
+  
+  // RouletteView의 subviews에서 UIBezierPath와 UILabel을 찾아 삭제합니다.
+  private func reset() {
+    for subview in subviews {
+      if let label = subview as? UILabel {
+        label.removeFromSuperview()
+      }
+      if let layer = subview.layer as? CAShapeLayer, layer.path != nil {
+        layer.path = nil
+        layer.removeFromSuperlayer()
+      }
+    }
   }
 }
 

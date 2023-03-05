@@ -10,11 +10,19 @@
 		9DC16E7A30E0941C0EF99349 /* Pods_roulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB53B92656EF9E0D180CE7F7 /* Pods_roulette.framework */; };
 		B410CC1D29A1D70700BF50EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B410CC1C29A1D70700BF50EF /* AppDelegate.swift */; };
 		B410CC1F29A1D70700BF50EF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B410CC1E29A1D70700BF50EF /* SceneDelegate.swift */; };
-		B410CC2129A1D70700BF50EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B410CC2029A1D70700BF50EF /* ViewController.swift */; };
+		B410CC2129A1D70700BF50EF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B410CC2029A1D70700BF50EF /* MainViewController.swift */; };
 		B410CC2429A1D70700BF50EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B410CC2229A1D70700BF50EF /* Main.storyboard */; };
 		B410CC2629A1D70900BF50EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B410CC2529A1D70900BF50EF /* Assets.xcassets */; };
 		B410CC2929A1D70900BF50EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B410CC2729A1D70900BF50EF /* LaunchScreen.storyboard */; };
 		B410CC3129A1D88300BF50EF /* RouletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B410CC3029A1D88300BF50EF /* RouletteView.swift */; };
+		B483176F29B47CDF00B6B09D /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B483176E29B47CDF00B6B09D /* EditViewController.swift */; };
+		B483177129B47D7800B6B09D /* EditItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B483177029B47D7800B6B09D /* EditItemCell.swift */; };
+		B483177429B483B900B6B09D /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B483177329B483B900B6B09D /* EditViewModel.swift */; };
+		B483177729B4858700B6B09D /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B483177629B4858700B6B09D /* UserDefaults.swift */; };
+		B483177A29B4873400B6B09D /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B483177929B4873400B6B09D /* MainViewModel.swift */; };
+		B483177C29B48CEE00B6B09D /* TextFieldAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B483177B29B48CEE00B6B09D /* TextFieldAlertViewController.swift */; };
+		B483177F29B49F9900B6B09D /* CompleteRotateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B483177E29B49F9900B6B09D /* CompleteRotateViewController.swift */; };
+		B483178229B4A0E000B6B09D /* present.json in Resources */ = {isa = PBXBuildFile; fileRef = B483178129B4A0E000B6B09D /* present.json */; };
 		B496A86E29A20F22000D0551 /* ArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B496A86D29A20F22000D0551 /* ArrowView.swift */; };
 		B496A87029A2156D000D0551 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B496A86F29A2156D000D0551 /* SettingView.swift */; };
 		B4D7189B29A25E6600F59CDB /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D7189A29A25E6600F59CDB /* UILabel+Extension.swift */; };
@@ -27,12 +35,20 @@
 		B410CC1929A1D70700BF50EF /* roulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = roulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B410CC1C29A1D70700BF50EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B410CC1E29A1D70700BF50EF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B410CC2029A1D70700BF50EF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B410CC2029A1D70700BF50EF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B410CC2329A1D70700BF50EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B410CC2529A1D70900BF50EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B410CC2829A1D70900BF50EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B410CC2A29A1D70900BF50EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B410CC3029A1D88300BF50EF /* RouletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteView.swift; sourceTree = "<group>"; };
+		B483176E29B47CDF00B6B09D /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		B483177029B47D7800B6B09D /* EditItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemCell.swift; sourceTree = "<group>"; };
+		B483177329B483B900B6B09D /* EditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
+		B483177629B4858700B6B09D /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		B483177929B4873400B6B09D /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		B483177B29B48CEE00B6B09D /* TextFieldAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlertViewController.swift; sourceTree = "<group>"; };
+		B483177E29B49F9900B6B09D /* CompleteRotateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteRotateViewController.swift; sourceTree = "<group>"; };
+		B483178129B4A0E000B6B09D /* present.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = present.json; path = ../../../../../Downloads/present.json; sourceTree = "<group>"; };
 		B496A86D29A20F22000D0551 /* ArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowView.swift; sourceTree = "<group>"; };
 		B496A86F29A2156D000D0551 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		B4D7189A29A25E6600F59CDB /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
@@ -81,20 +97,68 @@
 		B410CC1B29A1D70700BF50EF /* roulette */ = {
 			isa = PBXGroup;
 			children = (
+				B483178029B4A0CB00B6B09D /* Resources */,
+				B483177529B4857900B6B09D /* Custom */,
 				B4D7189929A25E4200F59CDB /* Extensions */,
 				B410CC1C29A1D70700BF50EF /* AppDelegate.swift */,
 				B410CC1E29A1D70700BF50EF /* SceneDelegate.swift */,
-				B410CC2029A1D70700BF50EF /* ViewController.swift */,
+				B483177829B4870000B6B09D /* Main */,
+				B483177D29B49F6900B6B09D /* CompleteRotate */,
+				B410CC2729A1D70900BF50EF /* LaunchScreen.storyboard */,
+				B410CC2A29A1D70900BF50EF /* Info.plist */,
+				B483177229B483AF00B6B09D /* Edit */,
+			);
+			path = roulette;
+			sourceTree = "<group>";
+		};
+		B483177229B483AF00B6B09D /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				B483177329B483B900B6B09D /* EditViewModel.swift */,
+				B483176E29B47CDF00B6B09D /* EditViewController.swift */,
+				B483177029B47D7800B6B09D /* EditItemCell.swift */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		B483177529B4857900B6B09D /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				B483177629B4858700B6B09D /* UserDefaults.swift */,
+				B483177B29B48CEE00B6B09D /* TextFieldAlertViewController.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		B483177829B4870000B6B09D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				B410CC2229A1D70700BF50EF /* Main.storyboard */,
+				B483177929B4873400B6B09D /* MainViewModel.swift */,
+				B410CC2029A1D70700BF50EF /* MainViewController.swift */,
 				B410CC3029A1D88300BF50EF /* RouletteView.swift */,
 				B496A86D29A20F22000D0551 /* ArrowView.swift */,
 				B496A86F29A2156D000D0551 /* SettingView.swift */,
 				B4D7189C29A262E600F59CDB /* HeaderView.swift */,
-				B410CC2229A1D70700BF50EF /* Main.storyboard */,
-				B410CC2529A1D70900BF50EF /* Assets.xcassets */,
-				B410CC2729A1D70900BF50EF /* LaunchScreen.storyboard */,
-				B410CC2A29A1D70900BF50EF /* Info.plist */,
 			);
-			path = roulette;
+			path = Main;
+			sourceTree = "<group>";
+		};
+		B483177D29B49F6900B6B09D /* CompleteRotate */ = {
+			isa = PBXGroup;
+			children = (
+				B483177E29B49F9900B6B09D /* CompleteRotateViewController.swift */,
+			);
+			path = CompleteRotate;
+			sourceTree = "<group>";
+		};
+		B483178029B4A0CB00B6B09D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B483178129B4A0E000B6B09D /* present.json */,
+				B410CC2529A1D70900BF50EF /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		B4D7189929A25E4200F59CDB /* Extensions */ = {
@@ -175,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B410CC2929A1D70900BF50EF /* LaunchScreen.storyboard in Resources */,
+				B483178229B4A0E000B6B09D /* present.json in Resources */,
 				B410CC2629A1D70900BF50EF /* Assets.xcassets in Resources */,
 				B410CC2429A1D70700BF50EF /* Main.storyboard in Resources */,
 			);
@@ -230,13 +295,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				B410CC3129A1D88300BF50EF /* RouletteView.swift in Sources */,
+				B483177C29B48CEE00B6B09D /* TextFieldAlertViewController.swift in Sources */,
 				B4D7189B29A25E6600F59CDB /* UILabel+Extension.swift in Sources */,
-				B410CC2129A1D70700BF50EF /* ViewController.swift in Sources */,
+				B410CC2129A1D70700BF50EF /* MainViewController.swift in Sources */,
 				B496A87029A2156D000D0551 /* SettingView.swift in Sources */,
 				B4D7189D29A262E600F59CDB /* HeaderView.swift in Sources */,
+				B483177A29B4873400B6B09D /* MainViewModel.swift in Sources */,
+				B483177F29B49F9900B6B09D /* CompleteRotateViewController.swift in Sources */,
 				B496A86E29A20F22000D0551 /* ArrowView.swift in Sources */,
+				B483177129B47D7800B6B09D /* EditItemCell.swift in Sources */,
 				B410CC1D29A1D70700BF50EF /* AppDelegate.swift in Sources */,
+				B483177729B4858700B6B09D /* UserDefaults.swift in Sources */,
+				B483177429B483B900B6B09D /* EditViewModel.swift in Sources */,
 				B410CC1F29A1D70700BF50EF /* SceneDelegate.swift in Sources */,
+				B483176F29B47CDF00B6B09D /* EditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

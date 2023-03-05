@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  roulette
 //
 //  Created by Dayeon Jung on 2023/02/19.
@@ -13,7 +13,7 @@ import Then
 import RxSwift
 import RxCocoa
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
   var disposeBag = DisposeBag()
   
   // 화살표 뷰
@@ -37,25 +37,15 @@ class ViewController: UIViewController {
   // 설정 뷰
   var settingView: SettingView!
   
-  
-  // 룰렛에 표시될 텍스트들
-  var numbers: [String] = []
-  
-  // 선택된 룰렛의 인덱스
-  var selectedIndex: Int = 1
+  var viewModel = MainViewModel()
   
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    setInitialData()
     setUI()
     bind()
   }
-  
-  private func setInitialData() {
-    numbers = ["미니상품 1개 미니상품 1개", "미니상품 2개", "대박상품", "다음 기회에1", "다음 기회에2 다음 기회에2 다음 기회에2"]
-  }
-  
+
   private func setUI() {
     headerView = HeaderView(frame: .zero)
     view.addSubview(headerView)
@@ -64,7 +54,7 @@ class ViewController: UIViewController {
       $0.leading.trailing.equalToSuperview()
     }
     
-    rouletteView = RouletteView(textArray: numbers)
+    rouletteView = RouletteView(textArray: viewModel.items)
     view.addSubview(rouletteView)
     rouletteView.snp.makeConstraints {
       $0.leading.trailing.equalToSuperview().inset(20)
@@ -95,12 +85,17 @@ class ViewController: UIViewController {
         // 룰렛을 돌리는 애니메이션 실행
         let randomAngle = owner.randomAngle()
         let oneArcAngle = owner.rouletteView.oneArcAngle
-        owner.selectedIndex = Int(floor(randomAngle/oneArcAngle))
+        owner.viewModel.selectedIndex = Int(floor(randomAngle/oneArcAngle))
         owner.rouletteView.runSpinAnimation(spinAmount: randomAngle)
 
         // 룰렛이 선택된 결과를 출력
-        DispatchQueue.main.asyncAfter(deadline: .now() + owner.rouletteView.spinDuration) {
-          print("룰렛이 \(self.numbers[owner.selectedIndex])을(를) 선택했습니다!")
+        DispatchQueue.main.asyncAfter(deadline: .now() + owner.rouletteView.spinDuration + 0.5) { [weak self] in
+          guard let self = self else { return }
+          
+          let vc = CompleteRotateViewController()
+          vc.message = "\(self.viewModel.items[self.viewModel.selectedIndex])"
+          vc.modalPresentationStyle = .fullScreen
+          self.present(vc, animated: true, completion: nil)
         }
       }
       .disposed(by: disposeBag)
@@ -109,6 +104,18 @@ class ViewController: UIViewController {
       .withUnretained(self)
       .bind { owner, _ in
         let vc = EditViewController()
+        let viewModel = EditViewModel(items: owner.viewModel.items)
+        vc.viewModel = viewModel
+        
+        vc.confirmButton.rx.tap
+          .withUnretained(owner)
+          .bind { owner, _ in
+            vc.dismiss(animated: true) {
+              owner.viewModel.items = viewModel.items
+              owner.rouletteView.changeTexts(to: viewModel.items)
+            }
+          }
+          .disposed(by: owner.disposeBag)
         owner.present(vc, animated: true, completion: nil)
       }
       .disposed(by: disposeBag)
