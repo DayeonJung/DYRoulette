@@ -26,4 +26,36 @@ struct UserDefault<T> {
 
 enum UserDefaultKeys: String {
   case rouletteItems
+  case winnerID
+  case candidateList
+}
+
+
+@propertyWrapper
+struct CodableUserDefault<T: Codable> {
+    let key: String
+    let defaultValue: T
+    
+    var wrappedValue: T {
+        get {
+            guard let data = userDefaults.data(forKey: key) else {
+                return defaultValue
+            }
+            do {
+                let value = try PropertyListDecoder().decode(T.self, from: data)
+                return value
+            } catch {
+                print("\(error.localizedDescription)")
+                return defaultValue
+            }
+        }
+        set {
+            do {
+                let data = try PropertyListEncoder().encode(newValue)
+                userDefaults.set(data, forKey: key)
+            } catch {
+                print("\(error.localizedDescription)")
+            }
+        }
+    }
 }
