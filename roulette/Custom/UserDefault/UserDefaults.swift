@@ -24,13 +24,6 @@ struct UserDefault<T> {
     }
 }
 
-enum UserDefaultKeys: String {
-  case rouletteItems
-  case winnerID
-  case candidateList
-}
-
-
 @propertyWrapper
 struct CodableUserDefault<T: Codable> {
     let key: String
