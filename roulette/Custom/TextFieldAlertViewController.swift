@@ -30,10 +30,10 @@ import RxRelay
  */
 
 class TextFieldAlertViewController: UIAlertController {
-  var placeHolderTexts: String?
-  var complete: PublishRelay<String> = .init()
+  var placeHolderTexts: [String] = []
+  var complete: PublishRelay<[String]> = .init()
   
-  convenience init(title: String?, message: String?, preferredStyle: UIAlertController.Style, placeHolderTexts: String?) {
+  convenience init(title: String?, message: String?, preferredStyle: UIAlertController.Style, placeHolderTexts: [String]) {
     self.init(title: title, message: message, preferredStyle: preferredStyle)
     self.placeHolderTexts = placeHolderTexts
   }
@@ -45,16 +45,16 @@ class TextFieldAlertViewController: UIAlertController {
   }
   
   private func addTextField() {
-    addTextField { (textField) in
-      textField.placeholder = self.placeHolderTexts
+    _ = self.placeHolderTexts.map { placeHolder in
+      addTextField { $0.placeholder = placeHolder }
     }
     
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
     let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] (action) in
-      guard let textField = self?.textFields?.first else { return }
-      guard let text = textField.text, !text.isEmpty else { return }
+      guard let self = self else { return }
+      guard let textFields = self.textFields else { return }
       
-      self?.complete.accept(text)
+      self.complete.accept(textFields.compactMap { $0.text })
     }
     
     addAction(cancelAction)

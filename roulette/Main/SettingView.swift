@@ -26,6 +26,13 @@ class SettingView: UIView {
     $0.setImage(coloredImage, for: .normal)
  }
   
+  // 당첨 기록 보기 버튼
+  var historyButton = UIButton().then {
+    $0.backgroundColor = .clear
+    let coloredImage = UIImage(named: "clock")
+    $0.setImage(coloredImage, for: .normal)
+  }
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.backgroundColor = UIColor.clear
@@ -45,10 +52,8 @@ class SettingView: UIView {
       $0.height.equalTo(48)
     }
     
-    stackView.addArrangedSubview(button)
-    stackView.addArrangedSubview(editButton)
-    
-    [button, editButton].forEach {
+    [button, editButton, historyButton].forEach {
+      stackView.addArrangedSubview($0)
       $0.snp.makeConstraints {
         $0.width.equalTo(48)
       }

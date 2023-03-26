@@ -14,7 +14,7 @@ class EditViewModel {
     self.items = items
   }
   
-  func addItem(text: String) {
-    items.append(text)
+  func addItems(texts: [String]) {
+    items.append(contentsOf: texts)
   }
 }

@@ -91,12 +91,12 @@ class EditViewController: UIViewController, UITableViewDataSource, UITableViewDe
           title: "룰렛을 추가해요",
           message: nil,
           preferredStyle: .alert,
-          placeHolderTexts: "룰렛 항목을 입력하세요"
+          placeHolderTexts: ["룰렛 항목을 입력하세요"]
         )
         alert.complete
           .withUnretained(owner)
           .bind { owner, texts in
-            owner.viewModel.addItem(text: texts)
+            owner.viewModel.addItems(texts: texts)
             owner.tableView.reloadData()
           }
           .disposed(by: owner.disposeBag)

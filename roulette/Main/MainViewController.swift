@@ -91,24 +91,11 @@ class MainViewController: UIViewController {
     settingView.button.rx.tap
       .withUnretained(self)
       .bind { owner, _ in
-        // 룰렛을 돌리는 애니메이션 실행
-        let randomAngle = owner.randomAngle()
-        let oneArcAngle = owner.rouletteView.oneArcAngle
-        owner.viewModel.selectedIndex = Int(floor(randomAngle/oneArcAngle))
-        owner.rouletteView.runSpinAnimation(spinAmount: randomAngle)
-
-        // 룰렛이 선택된 결과를 출력
-        DispatchQueue.main.asyncAfter(deadline: .now() + owner.rouletteView.spinDuration + 0.5) { [weak self] in
-          guard let self = self else { return }
-          
-          let vc = CompleteRotateViewController()
-          vc.message = "\(self.viewModel.items[self.viewModel.selectedIndex])"
-          vc.modalPresentationStyle = .fullScreen
-          self.present(vc, animated: true, completion: nil)
-        }
+        owner.pickWinner()
       }
       .disposed(by: disposeBag)
     
+    /// - warning: dismiss 시, 메모리 해제되지 않음
     settingView.editButton.rx.tap
       .withUnretained(self)
       .bind { owner, _ in
@@ -146,6 +133,28 @@ class MainViewController: UIViewController {
       }
       .disposed(by: disposeBag)
   }
+  
+  private func pickWinner() {
+    // 룰렛을 돌리는 애니메이션 실행
+    let randomAngle = randomAngle()
+    let oneArcAngle = rouletteView.oneArcAngle
+    viewModel.selectedIndex = Int(floor(randomAngle/oneArcAngle))
+    rouletteView.runSpinAnimation(spinAmount: randomAngle)
+
+    // 룰렛이 선택된 결과를 출력
+    DispatchQueue.main.asyncAfter(
+      deadline: .now() + rouletteView.spinDuration + 0.5
+    ) { [weak self] in
+      guard let self = self else { return }
+      
+      let vc = CompleteRotateViewController()
+      vc.message = "\(self.viewModel.items[self.viewModel.selectedIndex])"
+      vc.modalPresentationStyle = .fullScreen
+      self.present(vc, animated: true, completion: nil)
+    }
+    
+    // 당첨 정보 저장
+    
   }
 
   // 룰렛 회전량을 결정하는 함수

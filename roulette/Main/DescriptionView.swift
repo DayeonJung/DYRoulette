@@ -20,6 +20,8 @@ class DescriptionView: UIView {
     $0.textColor = .white
   }
   
+  var descriptionButton = UIButton()
+  
   var subDescriptionLabel = UILabel().then {
     $0.text = "완북도 하고~ 숙제도 잘해오고~ 지각도 없고~\n한달동안 수고했어 선생님이 쏜다!!~"
     $0.numberOfLines = 0
@@ -33,6 +35,7 @@ class DescriptionView: UIView {
     self.backgroundColor = UIColor.clear
     
     setupUI()
+    setName()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -50,6 +53,15 @@ class DescriptionView: UIView {
       .forEach {
         stackView.addArrangedSubview($0)
       }
+    
+    addSubview(descriptionButton)
+    descriptionButton.snp.makeConstraints {
+      $0.edges.equalTo(descriptionLabel)
+    }
+  }
+  
+  func setName() {
+    descriptionLabel.text = "\(WinnerUD.nickName() ?? "")를 위해"
   }
 }
 
