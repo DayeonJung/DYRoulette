@@ -8,6 +8,24 @@
 import Foundation
 
 class WinnerUD {
+  @UserDefault(key: UserDefaultKeys.winnerID.rawValue, defaultValue: Data())
+  static private var _id: Data
+  
+  static var id: UUID {
+    get {
+      var uuid = UUID()
+      if let str = String(data: _id, encoding: .utf8) {
+        if let uuidFromData = UUID(uuidString: str) {
+          uuid = uuidFromData
+        }
+      }
+      return uuid
+    }
+    set {
+      WinnerUD._id = newValue.uuidString.data(using: .utf8) ?? Data()
+    }
+  }
+  
   @CodableUserDefault(
     key: UserDefaultKeys.candidateList.rawValue,
     defaultValue: CandidateList(list: [Candidate(id: WinnerUD.id, realName: "김오름", nickName: "오름이")])

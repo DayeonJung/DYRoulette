@@ -128,6 +128,24 @@ class MainViewController: UIViewController {
         owner.present(vc, animated: true, completion: nil)
       }
       .disposed(by: disposeBag)
+    
+    descriptionView.descriptionButton.rx.tap
+      .withUnretained(self)
+      .bind { owner, _ in
+        let vc = ManageCandidateViewController()
+        let viewModel = ManageCandidateViewModel()
+        viewModel.winnerSelected
+          .withUnretained(self)
+          .bind { owner, _ in
+            owner.descriptionView.setName()
+          }
+          .disposed(by: viewModel.disposeBag)
+        
+        vc.viewModel = viewModel
+        owner.present(vc, animated: true, completion: nil)
+      }
+      .disposed(by: disposeBag)
+  }
   }
 
   // 룰렛 회전량을 결정하는 함수
