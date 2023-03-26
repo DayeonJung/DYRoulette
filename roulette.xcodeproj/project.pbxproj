@@ -16,6 +16,10 @@
 		B410CC2929A1D70900BF50EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B410CC2729A1D70900BF50EF /* LaunchScreen.storyboard */; };
 		B410CC3129A1D88300BF50EF /* RouletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B410CC3029A1D88300BF50EF /* RouletteView.swift */; };
 		B437AE3429D01F57002821F1 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B437AE3329D01F57002821F1 /* DescriptionView.swift */; };
+		B437AE3729D03178002821F1 /* ManageCandidateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B437AE3629D03178002821F1 /* ManageCandidateViewController.swift */; };
+		B437AE3929D03196002821F1 /* ManageCandidateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B437AE3829D03196002821F1 /* ManageCandidateViewModel.swift */; };
+		B437AE3B29D03317002821F1 /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B437AE3A29D03317002821F1 /* Candidate.swift */; };
+		B437AE3D29D03A19002821F1 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B437AE3C29D03A19002821F1 /* UserDefaultsManager.swift */; };
 		B483176F29B47CDF00B6B09D /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B483176E29B47CDF00B6B09D /* EditViewController.swift */; };
 		B483177129B47D7800B6B09D /* EditItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B483177029B47D7800B6B09D /* EditItemCell.swift */; };
 		B483177429B483B900B6B09D /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B483177329B483B900B6B09D /* EditViewModel.swift */; };
@@ -43,6 +47,10 @@
 		B410CC2A29A1D70900BF50EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B410CC3029A1D88300BF50EF /* RouletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteView.swift; sourceTree = "<group>"; };
 		B437AE3329D01F57002821F1 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		B437AE3629D03178002821F1 /* ManageCandidateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageCandidateViewController.swift; sourceTree = "<group>"; };
+		B437AE3829D03196002821F1 /* ManageCandidateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageCandidateViewModel.swift; sourceTree = "<group>"; };
+		B437AE3A29D03317002821F1 /* Candidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
+		B437AE3C29D03A19002821F1 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		B483176E29B47CDF00B6B09D /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		B483177029B47D7800B6B09D /* EditItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemCell.swift; sourceTree = "<group>"; };
 		B483177329B483B900B6B09D /* EditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
@@ -109,8 +117,19 @@
 				B410CC2729A1D70900BF50EF /* LaunchScreen.storyboard */,
 				B410CC2A29A1D70900BF50EF /* Info.plist */,
 				B483177229B483AF00B6B09D /* Edit */,
+				B437AE3529D03141002821F1 /* CandidateList */,
 			);
 			path = roulette;
+			sourceTree = "<group>";
+		};
+		B437AE3529D03141002821F1 /* CandidateList */ = {
+			isa = PBXGroup;
+			children = (
+				B437AE3A29D03317002821F1 /* Candidate.swift */,
+				B437AE3829D03196002821F1 /* ManageCandidateViewModel.swift */,
+				B437AE3629D03178002821F1 /* ManageCandidateViewController.swift */,
+			);
+			path = CandidateList;
 			sourceTree = "<group>";
 		};
 		B483177229B483AF00B6B09D /* Edit */ = {
@@ -127,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				B483177629B4858700B6B09D /* UserDefaults.swift */,
+				B437AE3C29D03A19002821F1 /* UserDefaultsManager.swift */,
 				B483177B29B48CEE00B6B09D /* TextFieldAlertViewController.swift */,
 			);
 			path = Custom;
@@ -303,9 +323,12 @@
 				B410CC2129A1D70700BF50EF /* MainViewController.swift in Sources */,
 				B496A87029A2156D000D0551 /* SettingView.swift in Sources */,
 				B4D7189D29A262E600F59CDB /* HeaderView.swift in Sources */,
+				B437AE3D29D03A19002821F1 /* UserDefaultsManager.swift in Sources */,
 				B483177A29B4873400B6B09D /* MainViewModel.swift in Sources */,
 				B483177F29B49F9900B6B09D /* CompleteRotateViewController.swift in Sources */,
 				B496A86E29A20F22000D0551 /* ArrowView.swift in Sources */,
+				B437AE3729D03178002821F1 /* ManageCandidateViewController.swift in Sources */,
+				B437AE3B29D03317002821F1 /* Candidate.swift in Sources */,
 				B483177129B47D7800B6B09D /* EditItemCell.swift in Sources */,
 				B410CC1D29A1D70700BF50EF /* AppDelegate.swift in Sources */,
 				B483177729B4858700B6B09D /* UserDefaults.swift in Sources */,
@@ -313,6 +336,7 @@
 				B410CC1F29A1D70700BF50EF /* SceneDelegate.swift in Sources */,
 				B483176F29B47CDF00B6B09D /* EditViewController.swift in Sources */,
 				B437AE3429D01F57002821F1 /* DescriptionView.swift in Sources */,
+				B437AE3929D03196002821F1 /* ManageCandidateViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
