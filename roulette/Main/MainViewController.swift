@@ -37,6 +37,9 @@ class MainViewController: UIViewController {
   // 설정 뷰
   var settingView: SettingView!
   
+  // 설명 뷰
+  var descriptionView: DescriptionView!
+  
   var viewModel = MainViewModel()
   
   override func viewDidLoad() {
@@ -68,13 +71,19 @@ class MainViewController: UIViewController {
       $0.centerX.equalTo(rouletteView)
     }
     
-    settingView = SettingView()
-    view.addSubview(settingView)
-    settingView.snp.makeConstraints {
-      $0.bottom.equalToSuperview().offset(-60)
+    descriptionView = DescriptionView()
+    view.addSubview(descriptionView)
+    descriptionView.snp.makeConstraints {
+      $0.bottom.equalToSuperview().offset(-20)
       $0.centerX.equalToSuperview()
     }
     
+    settingView = SettingView()
+    view.addSubview(settingView)
+    settingView.snp.makeConstraints {
+      $0.bottom.equalTo(descriptionView.snp.top).offset(-28)
+      $0.centerX.equalToSuperview()
+    }
   }
   
   private func bind() {

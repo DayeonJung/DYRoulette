@@ -52,7 +52,7 @@ class TextFieldAlertViewController: UIAlertController {
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
     let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] (action) in
       guard let textField = self?.textFields?.first else { return }
-      guard let text = textField.text else { return }
+      guard let text = textField.text, !text.isEmpty else { return }
       
       self?.complete.accept(text)
     }
